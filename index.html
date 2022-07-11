@@ -65,9 +65,33 @@
   	<h1 id="curr-work">CURRENT WORK</h1>
 
   	<div id="curr-work-div">
-  		<p>
-  			HELLO
-  		</p>
+  		<ul>
+  			<li>
+  				In the first step of this project, we used an exact integer programming model alongside existing heuristic methods for maximizing modularity in small real social networks and random networks
+  			</li>
+  			<img src="ip_formulation.png">
+  			<li>
+  				We evaluated the gap in modularity between the integer programming solution and four heuristics, <a href="">CNM</a>, <a href="">Louvain</a>, <a href="">Combo</a> and <a href="">Leiden</a>
+  				<img src="modularity_gap_4_heuristics.png">
+  				<br>
+  				The optimality gap for Belief and NMF were larger than X% and hence have been ommitted from this plot.
+  				<br>
+  				The best performing algorithm, Combo has an optimality gap of X% 
+  				<br></br>
+  			</li>
+  			<li>
+  				We also measured the level of similarity between sub-optimal and optimal communities using the concept of normalized mutual information (NMI) which takes the value 1 if the communities match. 
+  				<img src="nmi_4_heuristics.png">
+
+  				<!-- While Combo performs well on this test set, it is not optimal nor does it provide an approximate guarantee. -->
+  			</li>
+  			<li>
+  				It is clear that there is a gap between the currently available best methods and the optimal solution. Additionally, the memory and time requirements for the IP make it an impractical solution for large networks. Hence, we are working on the Bayan Algorithm, combining ideas from integer programming (the branch-and-cut algorithm) with efficient heuristic methods to exactly solve this fundamental problem for small and mid-size networks and provide solutions with approximation guarantees for large networks.
+  			</li>
+  			<li>
+  				TALK ABOUT BAYAN ALGORITHM
+  			</li>
+  		</ul>
   	</div>
   </section>
 
@@ -78,7 +102,7 @@
 			<h1 id = "collab">COLLABORATORS</h1>
 		<!-- </div> -->
 
-		<div id = "personal">
+		<div id = "personal-samin">
 			<img src="prof_samin_aref.jpeg" id="myphoto">
 			<h1 id = "nametag">Prof Samin Aref, Ph.D.</h1>
 			<p id = "student">Department of Mechanical & Industrial Engineering, University of Toronto</p>
@@ -93,7 +117,7 @@
 			</a>
 		</div>
 
-		<div id = "personal">
+		<div id = "personal-mahdi">
 			<img src="prof_mahdi.jpeg" id="myphoto">
 			<h1 id = "nametag">PostDoc Mahdi Mostajabdaveh</h1>
 			<p id = "student">Polytechnique Montreal</p>
@@ -105,7 +129,7 @@
 			</a>
 		</div>
 
-		<div id = "personal">
+		<div id = "personal-hriday">
 			<img src="Display.jpg" id="myphoto">
 			<h1 id = "nametag">Hriday Chheda</h1>
 			<p id = "student">4th year undergrad student at the University of Toronto</p>
@@ -123,6 +147,8 @@
 
 	</section>
 	
+	<div style="clear: both;"></div>
+
 	<section id="nameTheory">
 		<h1 id="name-h">WHY THE NAME "BAYAN"?</h1>
 		<div id="bayan-name-div">

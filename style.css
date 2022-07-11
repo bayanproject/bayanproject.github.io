@@ -211,17 +211,43 @@ li {
 	/*letter-spacing: 3px;*/
 }
 
-#personal {
+#personal-samin {
+	float: left;
 	margin-left: 50px;
 	/*margin-top: 50px;*/
 	height: 560px;
-	width: 400px;
-	float: left;
+	width: 28%;
 	border-style: solid;
 	border-width: 5px;
 	border-color: #55d6aa;
 	background-color: white;
-	margin-bottom: 50px;
+	/*margin-bottom: 50px;*/
+}
+
+#personal-mahdi{
+	float: left;
+	margin-left: 50px;
+	/*margin-top: 50px;*/
+	height: 560px;
+	width: 28%;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #55d6aa;
+	background-color: white;
+	/*margin-bottom: 50px;*/
+}
+
+#personal-hriday {
+	float: left;
+	margin-left: 50px;
+	/*margin-top: 50px;*/
+	height: 560px;
+	width: 28%;
+	border-style: solid;
+	border-width: 5px;
+	border-color: #55d6aa;
+	background-color: white;
+	/*margin-bottom: 50px;*/
 }
 
 #myphoto {
