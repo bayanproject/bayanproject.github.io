@@ -215,7 +215,7 @@ li {
 	float: left;
 	margin-left: 50px;
 	/*margin-top: 50px;*/
-	height: 560px;
+	height: auto;
 	width: 28%;
 	border-style: solid;
 	border-width: 5px;
@@ -228,7 +228,7 @@ li {
 	float: left;
 	margin-left: 50px;
 	/*margin-top: 50px;*/
-	height: 560px;
+	height: auto;
 	width: 28%;
 	border-style: solid;
 	border-width: 5px;
@@ -241,7 +241,7 @@ li {
 	float: left;
 	margin-left: 50px;
 	/*margin-top: 50px;*/
-	height: 560px;
+	height: auto;
 	width: 28%;
 	border-style: solid;
 	border-width: 5px;
@@ -255,7 +255,7 @@ li {
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 2px;
-	width: 300px;
+	width: 75%;
 	border: solid;
 	border-radius: 100%;
 	border-color: #55d6aa;
@@ -283,7 +283,7 @@ li {
 	margin-top: 10px;
 	width: 55px;
 	height: 55px;
-	margin-left: 130px;
+	margin-left: 30%;
 	margin-right: auto;
 }
 
@@ -291,12 +291,12 @@ li {
 	margin-top: 10px;
 	width: 45px;
 	height: 45px;
-	margin-left: 30px;
+	margin-left: 10%;
 	/*margin-right: 30px;*/
 }
 
 
-#aboutme {
+/*#aboutme {
 	margin-left: 550px;
 	height: 580px;
 	background-color: white;
@@ -306,7 +306,7 @@ li {
 	border-style: solid;
 	border-width: 5px;
 	border-color: #55d6aa;
-}
+}*/
 
 #aboutmeh {
 	margin-top: 20px;
