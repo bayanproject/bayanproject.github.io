@@ -20,8 +20,8 @@
   	</header>
 
   <section id = "about">
-  	
-  	<h1 id = "about-title">WHAT IS THE BAYAN PROJECT?</h1>
+
+  	<h1 id = "about-title">What Bayan project does?</h1>
   	<div id = "about-div">
   		<h2>
   			Aim
@@ -29,7 +29,7 @@
   		<p>
   			<ul>
   				<li>
-  					To develop a new reliable, open-source, and reproducible algorithm for a robust and theoretically grounded detection of communities, with optimal guarantees.
+  					To develop a reliable algorithm for a robust detection of communities in networks, with optimality guarantees.
   				</li>
   			</ul>
   		</p>
@@ -38,58 +38,46 @@
   		</h2>
   		<ul id="cd-ul">
   				<li>
-  					The process of inductively identifying groups within a network (graph), is a core problem in data science <a href="">(link) </a>
+  					Community detection is the process of inductively identifying groups within a network (graph). It is a core problem in data science with a wide range of applications in life sciences (e.g. biological systems), social sciences (social networks), physicial sciences (complex systems), mathematical sciences (informational networks), and even health sciences (drug discovery) <a href="https://en.wikipedia.org/wiki/Community_structure">(Wikipedia). </a>
   					<img src="6meupu.gif" id = "cd-gif"> </img>
   				</li>
   				<li>
-  					There are several existing methods and algorithms for approaching this computational problem. One family of algorithms attempts to find communities by maximizing modularity.
+  					There are several existing methods and algorithms for approaching this computational problem. One family of algorithms attempts to find communities by maximizing <em>modularity</em>: A network-level quantity indicating the fitness of inferred communities in being internally cohesive and mutually separated.
   				</li>
   		</ul>
-
-  		<h2>
-  			Modularity Maximization
-  		</h2>
   		<ul>
-  			<li>
-  				Modularity: A network-level quantity indicating the fitness of inferred communities in being internally cohesive and mutually separated. <a href="">(link)</a>
-  			</li>
-  			<li>
-  				Despite their name and design philosophy, current modularity maximization algorithms fail to maximize modularity or guarantee proximity to a globally optimal solution. They result in degenerate solutions of communities that are likely to be far from the intended modular structure with maximum likelihood based on a degree-preserving null model
-  			</li>
   		</ul>
-  		
+
   	</div>
   </section>
-	
+
   <section id = "current-work">
-  	<h1 id="curr-work">CURRENT WORK</h1>
+  	<h1 id="curr-work">Do we need yet another community detection algorithm? Yes, and here's why:</h1>
 
   	<div id="curr-work-div">
   		<ul>
   			<li>
-  				In the first step of this project, we used an exact integer programming model alongside existing heuristic methods for maximizing modularity in small real social networks and random networks
+  				In the first step of this project, we used the following exact integer programming model alongside existing heuristic methods for maximizing modularity in a testbed of real social networks and random networks.
   			</li>
   			<img src="ip_formulation.png">
   			<li>
-  				We evaluated the gap in modularity between the integer programming solution and four heuristics, <a href="">CNM</a>, <a href="">Louvain</a>, <a href="">Combo</a> and <a href="">Leiden</a>
+  				We evaluated the gap in modularity between the integer programming globally optimal solution and several existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.mnmf.html">non-negative matrix factorization</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>.<br>
   				<img src="modularity_gap_4_heuristics.png">
   				<br>
-  				The optimality gap for Belief and NMF were larger than X% and hence have been ommitted from this plot.
-  				<br>
-  				The best performing algorithm, Combo has an optimality gap of X% 
+  				The optimality gap for the two algorithms Belief and non-negative matrix factorization were consistently larger than 20% and hence they have been ommitted from this plot.	According to this evaluation, the best performing heuristic algorithm, in terms of proximity to an optimal solution, is Combo (Sobolevsky et al. 2014) which is the only heuristic with an optimality gap lower than 5% for both real and synthetic networks in our experiments.
   				<br></br>
   			</li>
   			<li>
-  				We also measured the level of similarity between sub-optimal and optimal communities using the concept of normalized mutual information (NMI) which takes the value 1 if the communities match. 
+  				We also measured the level of similarity between the sub-optimal communities from each heuristic method and the optimal modularity-maximizing communities using the concept of <em>normalized mutual information</em> (NMI). NMI represents the degree of the match between a pair of network partitions on a scale of 0 to 1 (e.g. the value 1 for two identical partitions).<br>
   				<img src="nmi_4_heuristics.png">
 
   				<!-- While Combo performs well on this test set, it is not optimal nor does it provide an approximate guarantee. -->
   			</li>
   			<li>
-  				It is clear that there is a gap between the currently available best methods and the optimal solution. Additionally, the memory and time requirements for the IP make it an impractical solution for large networks. Hence, we are working on the Bayan Algorithm, combining ideas from integer programming (the branch-and-cut algorithm) with efficient heuristic methods to exactly solve this fundamental problem for small and mid-size networks and provide solutions with approximation guarantees for large networks.
+  				This simple analysis indicates a susbtantial gap (1-NMI) between the partitions obtained using the current heuristic methods and a true modularity-maximizing partition of those networks.
   			</li>
   			<li>
-  				TALK ABOUT BAYAN ALGORITHM
+  				Bayan algorithm solves this fundamental problem and provides partitions within a guaranteed proximity of the maximum modularity. The Bayan algorithm will soon be publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python alongside a wrapper for R users.
   			</li>
   		</ul>
   	</div>
@@ -99,28 +87,28 @@
 	<section id = "collaborators">
 
 		<!-- <div id="collab-div"> -->
-			<h1 id = "collab">COLLABORATORS</h1>
+			<h1 id = "collab">Project Members</h1>
 		<!-- </div> -->
 
 		<div id = "personal-samin">
 			<img src="prof_samin_aref.jpeg" id="myphoto">
-			<h1 id = "nametag">Prof Samin Aref, Ph.D.</h1>
+			<h1 id = "nametag">Prof. Samin Aref</h1>
 			<p id = "student">Department of Mechanical & Industrial Engineering, University of Toronto</p>
 			<a href="https://saref.github.io/">
-			<p id="suds">Website<br></br></p> 
+			<p id="suds">Website<br></br></p>
 
 			</a>
-			<a href="mailto:hriday.chheda@gmail.com">
+			<a href="mailto:aref@mie.utoronto.ca">
 				<img src="gmailicon.png" id = "gmailicon">
 			</a>
-			<a href="https://www.linkedin.com/in/hriday-chheda-264871134/">
+			<a href="https://www.linkedin.com/in/saref/">
 				<img src="linkedinicon.png" id = "linkedinicon">
 			</a>
 		</div>
 
 		<div id = "personal-mahdi">
 			<img src="prof_mahdi.jpeg" id="myphoto">
-			<h1 id = "nametag">PostDoc Mahdi Mostajabdaveh</h1>
+			<h1 id = "nametag">Mahdi Mostajabdaveh, Ph.D.</h1>
 			<p id = "student">Polytechnique Montreal
 				<br></br>
 			</p>
@@ -141,7 +129,7 @@
 			<p id = "student">4th year undergrad student at the University of Toronto</p>
 			<p id = "univ">Comptuer Science Specialist, Statistics Major</p>
 			<a href="https://datasciences.utoronto.ca/dsi-welcomes-2022-suds-scholars/">
-			<p id="suds">SUDS scholar at the Data Sciences Institute</p> 
+			<p id="suds">SUDS scholar at the Data Sciences Institute</p>
 			</a>
 			<a href="mailto:hriday.chheda@gmail.com">
 				<img src="gmailicon.png" id = "gmailicon">
@@ -152,23 +140,20 @@
 		</div>
 
 	</section>
-	
+
 	<div style="clear: both;"></div>
 
 	<section id="nameTheory">
-		<h1 id="name-h">WHY THE NAME "BAYAN"?</h1>
+		<h1 id="name-h">Origin of the algorithm name "Bayan"?</h1>
 		<div id="bayan-name-div">
 
 			<ul id="name-ul">
 				<img src="bayan_village.png" id="bayan-img">
 				<li>
-					Bayan is a village in Iran that happens to be the midpoint of the geo co-ordinates of the hometowns of the collaborators
+					Bayan is a village in the Southeast of Iran located at the midpoint of the hometowns of the developers of this project.
 				</li>
 				<li>
-					Hometowns - Masshad, Shiraz, Mumbai
-				</li>
-				<li>
-					Bayan is a small "community" of 22 people in 5 families as of the 2016 census
+					Bayan is a small "<em>community</em>" of 22 people in 5 families as of the 2016 census.
 				</li>
 
 
