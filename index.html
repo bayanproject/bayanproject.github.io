@@ -38,7 +38,7 @@
   		</h2>
   		<ul id="cd-ul">
   				<li>
-  					Community detection is the process of inductively identifying groups within a network (graph). It is a core problem in data science with a wide range of applications in life sciences (e.g. biological systems), social sciences (social networks), physicial sciences (complex systems), mathematical sciences (informational networks), and even health sciences (drug discovery) <a href="https://en.wikipedia.org/wiki/Community_structure">(Wikipedia). </a>
+  					Community detection is the process of inductively identifying groups within a network (graph). It is a core problem in data science with a wide range of applications in life sciences (e.g., biological systems), social sciences (social networks), physical sciences (complex systems), mathematical sciences (informational networks), and even health sciences (drug discovery) <a href="https://en.wikipedia.org/wiki/Community_structure">(Wikipedia). </a>
   					<img src="6meupu.gif" id = "cd-gif"> </img>
   				</li>
   				<li>
@@ -61,27 +61,73 @@
   			</li>
   			<img src="ip_formulation.png">
   			<li>
-  				We evaluated the gap in modularity between the integer programming globally optimal solution and several existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.mnmf.html">non-negative matrix factorization</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>.<br>
+  				We evaluated the gap in modularity between the integer programming globally optimal solution and several existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM (Greedy)</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>.<br>
   				<img src="modularity_gap_4_heuristics.png">
   				<br>
-  				The optimality gap for the two algorithms Belief and non-negative matrix factorization were consistently larger than 20% and hence they have been ommitted from this plot.	According to this evaluation, the best performing heuristic algorithm, in terms of proximity to an optimal solution, is Combo (Sobolevsky et al. 2014) which is the only heuristic with an optimality gap lower than 5% for both real and synthetic networks in our experiments.
+  				The optimality gap for the Belief algorithm was consistently larger than 20% and hence it has been omitted from the plot. According to this evaluation, the best performing heuristic algorithm for maximizing modularity, in terms of proximity to an optimal solution, is Combo (Sobolevsky et al. 2014) which is the only heuristic with an optimality gap lower than 5% for both real and synthetic networks in our experiments. Note that the optimality gap of modularity maximization heuristics often remains unknown in the absence of an exact or approximation algorithm.
   				<br></br>
   			</li>
   			<li>
-  				We also measured the level of similarity between the sub-optimal communities from each heuristic method and the optimal modularity-maximizing communities using the concept of <em>normalized mutual information</em> (NMI). NMI represents the degree of the match between a pair of network partitions on a scale of 0 to 1 (e.g. NMI takes the value 1 for two identical partitions).<br>
+  				We also measured the level of similarity between the sub-optimal communities from each heuristic method and the optimal modularity-maximizing communities using the concept of normalized <em>Adjusted Mutual Information</em> (AMI). AMI represents the degree of the match between a pair of network partitions accounting for similarity by chance (e.g., AMI takes the value 1 for two identical partitions).<br>
   				<img src="nmi_4_heuristics.png">
 
   				<!-- While Combo performs well on this test set, it is not optimal nor does it provide an approximate guarantee. -->
   			</li>
   			<li>
-  				This simple analysis indicates a susbtantial gap (1-NMI) between the partitions obtained using the current heuristic methods and a true modularity-maximizing partition of those networks.
-  			</li>
-  			<li>
-  				Bayan algorithm solves this fundamental problem and provides partitions within a guaranteed proximity of the maximum modularity. The Bayan algorithm will soon be publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python alongside a wrapper for R users.
+  				This simple analysis indicates that there could be substantial dissimilarity between the partitions obtained from the current heuristic methods and a modularity-maximizing partition even if the optimality of the heuristic is low. Bayan algorithm solves this fundamental problem and provides partitions within a guaranteed proximity of the maximum modularity.
   			</li>
   		</ul>
   	</div>
   </section>
+
+
+	<section id = "current-work">
+		<h1 id="curr-work">How does Bayan compare with other community detection methods?</h1>
+
+		<div id="curr-work-div">
+			<ul>
+				<li>
+					In the second step of this project, we compared Bayan with 22 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs.
+				</li>
+				<li>
+					We evaluated the AMI between the ground-truth planted partitions and the partitions returned from each algorithm,
+					<em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">Greedy</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a>,
+					   <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.paris.html">Paris</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.cpm.html">CPM</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.chinesewhispers.html">Chinese whispers</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.edmot.html">EdMot</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.ga.html">Genetic Algorithm (GA)</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.gemsec.html">Gemsec</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.head_tail.html">Head tail</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.infomap.html">Infomap</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.kcut.html">k-cut</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.label_propagation.html">Label propagation</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.walktrap.html">Walktrap</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rber_pots.html">Reichardt Bornholdt (RB)</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Leicht Newman (LN)</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.significance_communities.html">Significant scales</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.surprise_communities.html">Surprise</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.sbm_dl.html">Stochastic Block Model (SBM)</a>,
+						 and <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.scd.html">Weighted Community Clustering (WCC).</a>
+						 </em><br>
+					<img src="ranking.png"
+					width="1000">
+					<li>
+					Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI. The figure above ranks the algorithms based on AMI in seven experiment settings (seven values of the LFR mu parameter) averaged over 100 LFR graphs.
+  			</li>
+				<li>
+					Bayan has a relatively stable performance rank over all values of the mu parameter (fraction of inter-community edges used in generating LFR graphs). Also, averaging the AMIs over all 700 LFR graphs, Bayan has the largest average AMI. This indicates the capability of Bayan in retrieving the ground-truth communities.
+				</li>
+				<li>
+ 				The Bayan algorithm will soon be publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python alongside a wrapper for R users.
+				</li>
+			</ul>
+		</div>
+	</section>
 
 
 	<section id = "collaborators">
@@ -129,7 +175,7 @@
 			<img src="Display.jpg" id="myphoto">
 			<h1 id = "nametag">Hriday Chheda</h1>
 			<p id = "student">4th year undergrad student at the University of Toronto</p>
-			<p id = "univ">Comptuer Science Specialist, Statistics Major</p>
+			<p id = "univ">Computer Science Specialist, Statistics Major</p>
 			<a href="https://datasciences.utoronto.ca/dsi-welcomes-2022-suds-scholars/">
 			<p id="suds">SUDS scholar at the Data Sciences Institute</p>
 			</a>
