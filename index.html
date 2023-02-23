@@ -21,7 +21,7 @@
 
   <section id = "about">
 
-  	<h1 id = "about-title">What Bayan project does?</h1>
+  	<h1 id = "about-title">What is Bayan project about?</h1>
   	<div id = "about-div">
   		<h2>
   			Aim
@@ -29,7 +29,7 @@
   		<p>
   			<ul>
   				<li>
-  					To develop a reliable algorithm for a robust detection of communities in networks, with optimality guarantees.
+  					Developing a reliable and accurate algorithm for discovering communities in networks, with optimality guarantees.
   				</li>
   			</ul>
   		</p>
@@ -42,7 +42,7 @@
   					<img src="6meupu.gif" id = "cd-gif"> </img>
   				</li>
   				<li>
-  					There are several existing methods and algorithms for approaching this computational problem. One family of algorithms attempts to find communities by maximizing <em>modularity</em>: A network-level quantity indicating the fitness of inferred communities in being internally cohesive and mutually separated.
+  					There are several existing methods (algorithms) for approaching this computational problem. One family of algorithms attempts to find communities by maximizing <em>modularity</em>: a network-level quantity indicating the fraction of intra-community edges minus the expected fraction under a degree-preserving null model.
   				</li>
   		</ul>
   		<ul>
@@ -57,24 +57,25 @@
   	<div id="curr-work-div">
   		<ul>
   			<li>
-  				In the first step of this project, we used the following exact integer programming model alongside existing heuristic methods for maximizing modularity in a testbed of real social networks and random networks.
+  				In the first step of this project, we solved the following exact Integer Programming (IP) model for a testbed of 80 real networks and random graphs. We evaluated eight existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM (Greedy)</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.paris.html">Paris</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.edmot.html">EdMot</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Leicht Newman (LN)</a></em>.<br>
   			</li>
   			<img src="ip_formulation.png">
+				<br>
+				Notation for the <a href="https://doi.org/10.1080/15427951.2014.950875"> IP model</a>: The input is graph G=(V,E) with |V|=n nodes, |E|=m edges, and adjacency matrix entries a_{ij}. d_i is the degree of node i, gamma is the resolution parameter. The term associated with each pair (i,j) is b_{ij} and referred to as the modularity matrix entry for (i,j). Using the binary decision variable x_{ij} for each pair of distinct nodes (i,j), their cluster membership is either the same (represented by x_{ij}=0) or different (represented by x_{ij}=1). K(i,j) indicates a minimum-cardinality separating set for the nodes i,j. Accordingly, the problem of maximizing the modularity of input graph G can be formulated as the IP model above <a href="https://doi.org/10.1080/15427951.2014.950875">(Dinh and Thai 2015)</a>.
+				<br><br>
   			<li>
-  				We evaluated the gap in modularity between the integer programming globally optimal solution and several existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM (Greedy)</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>.<br>
-  				<img src="modularity_gap_4_heuristics.png">
-  				<br>
-  				The optimality gap for the Belief algorithm was consistently larger than 20% and hence it has been omitted from the plot. According to this evaluation, the best performing heuristic algorithm for maximizing modularity, in terms of proximity to an optimal solution, is Combo (Sobolevsky et al. 2014) which is the only heuristic with an optimality gap lower than 5% for both real and synthetic networks in our experiments. Note that the optimality gap of modularity maximization heuristics often remains unknown in the absence of an exact or approximation algorithm.
-  				<br></br>
+  				We investigated the extent to which current heuristic modularity maximization algorithms succeed in maximizing modularity by evaluating <br>(1) the ratio of their output modularity to the maximum modularity for a given graph (GOP) and <br>(2) the similarity between their output partition and all modularity-maximizing partitions of that graph using Adjusted Mutual Information (AMI).<br> The following figure shows a scatterplot of GOP and AMI. It shows GOP on the y-axis and AMI on the x-axis for the combination of each network and algorithm.<br>
   			</li>
-  			<li>
-  				We also measured the level of similarity between the sub-optimal communities from each heuristic method and the optimal modularity-maximizing communities using the concept of normalized <em>Adjusted Mutual Information</em> (AMI). AMI represents the degree of the match between a pair of network partitions accounting for similarity by chance (e.g., AMI takes the value 1 for two identical partitions).<br>
-  				<img src="nmi_4_heuristics.png">
 
-  				<!-- While Combo performs well on this test set, it is not optimal nor does it provide an approximate guarantee. -->
-  			</li>
+  				<img src="scatter.png">
+  				<br>
+				<li>
+  				Looking at the y-axis values in the figure, we observe that there is a substantial variation in the values of GOP (i.e., extent of sub-optimality) returned by the eight heuristic algorithms. The x-axis values in the figure show the considerable dissimilarity between the sub-optimal partitions and any optimal partition for these networks. Focusing on the position of data points, we observe that they are mostly located above the 45-degree line. This indicates that sub-optimal partitions tend to be disproportionally dissimilar to any optimal partition. This result goes against the naive viewpoint that close-to-maximum modularity partitions are also close to an optimal partition.
   			<li>
-  				This simple analysis indicates that there could be substantial dissimilarity between the partitions obtained from the current heuristic methods and a modularity-maximizing partition even if the optimality of the heuristic is low. Bayan algorithm solves this fundamental problem and provides partitions within a guaranteed proximity of the maximum modularity.
+					The average modularity-based heuristic algorithm returns optimal partitions for only 15.1% of these graphs. Taken together with the low success rates of heuristic algorithms in maximizing modularity, our results indicate a crucial mismatch between the design philosophy of modularity maximization algorithms for community detection and their performance: Heuristic modularity maximization algorithms rarely return an optimal partition or a partition resembling an optimal partition.
+			</li>
+			<li>
+         The Bayan algorithm solves this fundamental problem and provides optimal partitions and partitions within a guaranteed proximity to an optimal partition.
   			</li>
   		</ul>
   	</div>
@@ -87,11 +88,11 @@
 		<div id="curr-work-div">
 			<ul>
 				<li>
-					In the second step of this project, we compared Bayan with 22 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs.
+					In the second step of this project, we compared Bayan with 22 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs. Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI.
 				</li>
 				<li>
 					We evaluated the AMI between the ground-truth planted partitions and the partitions returned from each algorithm,
-					<em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">Greedy</a>,
+					<em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">Greedy (CNM)</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a>,
@@ -117,17 +118,42 @@
 					<img src="ranking.png"
 					width="1000">
 					<li>
-					Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI. The figure above ranks the algorithms based on AMI in seven experiment settings (seven values of the LFR mu parameter) averaged over 100 LFR graphs.
+					The figure above ranks the 23 algorithms based on AMI in seven experiment settings (seven values of the LFR mu parameter indicating the disassociation of the structure and clusters) averaged over 100 LFR graphs.
   			</li>
 				<li>
 					Bayan has a relatively stable performance rank over all values of the mu parameter (fraction of inter-community edges used in generating LFR graphs). Also, averaging the AMIs over all 700 LFR graphs, Bayan has the largest average AMI. This indicates the capability of Bayan in retrieving the ground-truth communities.
 				</li>
-				<li>
- 				The Bayan algorithm will soon be publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python alongside a wrapper for R users.
-				</li>
 			</ul>
 		</div>
 	</section>
+	<section id = "current-work">
+		<h1 id="curr-work">Interested to learn more? Check out our preprints on ArXiv.</h1>
+		<div id="curr-work-div">
+			<ul>
+				<li>
+					Samin Aref, Mahdi Mostajabdaveh, and Hriday Chheda. "Heuristic modularity maximization algorithms for community detection rarely return an optimal partition or anything similar." <a href="https://arxiv.org/pdf/2209.04562">ArXiv preprint</a>
+				</li>
+				<li>
+					Samin Aref, Hriday Chheda, and Mahdi Mostajabdaveh. "The Bayan algorithm: detecting communities in networks through exact and approximate optimization of modularity." <a href="https://arxiv.org/pdf/2209.04562">ArXiv preprint 2209.04562</a>
+				</li>
+			</section>
+			<section id = "current-work">
+				<h1 id="curr-work">You can start using Bayan in Python today.</h1>
+				<div id="curr-work-div">
+					<ul>
+						<li>
+						The Bayan algorithm is publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python. We also plan to make a wrapper publicly available for R users.
+						</li>
+				<li>
+					Running Bayan for models with more than 2000 variables or 2000 constraints requires a free academic license to be installed for the mathematical solver Gurobi (which solves the linear programming relaxation problems within the Bayan algorithm). You may follow the instructions in the <a href="https://github.com/saref/bayan">GitHub Repository</a> to request and install a free academic license for Gurobi.
+		</li>
+		<li>
+			Bayan algorithm for Python: <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.bayan.html
+">Documentation</a> and <a href="https://github.com/saref/bayan">GitHub Repository</a>. The Bayan algorithm can be used as follow in Python:
+</li>
+						<img src="python_example.png">
+
+					</section>
 
 
 	<section id = "collaborators">
@@ -141,8 +167,6 @@
 			<h1 id = "nametag">Prof. Samin Aref</h1>
 			<p id = "student">Department of Mechanical & Industrial Engineering</p>
 			<p id = "univ">University of Toronto</p>
-			<a href="https://saref.github.io/">
-			<p id="suds">Website</p>
 
 			</a>
 			<a href="mailto:aref@mie.utoronto.ca">
@@ -151,16 +175,16 @@
 			<a href="https://www.linkedin.com/in/saref/">
 				<img src="linkedinicon.png" id = "linkedinicon">
 			</a>
-			<a href="https://twitter.com/SaminAref">
-				<img src="twittericon.png" id = "linkedinicon">
+			<a href="https://saref.github.io/">
+				<img src="www.jpg" id = "linkedinicon">
 			</a>
 		</div>
 
 		<div id = "personal-mahdi">
 			<img src="Mahdi.jpg" id="myphoto">
 			<h1 id = "nametag">Mahdi Mostajabdaveh, Ph.D.</h1>
-			<p id = "student">Department of Mathematics and Industrial Engineering</p>
-			<p id = "univ">Polytechnique Montreal</p>
+			<p id = "student">Huawei Technologies Canada</p>
+			<p id = "univ"> </p
 			<a href="https://www.gerad.ca/fr/people/mahdi-mostajabdaveh">
 			<p id="suds">Website</p>
 			<a href="mailto:mahdi.mostajabdaveh@polymtl.ca">
@@ -176,8 +200,6 @@
 			<h1 id = "nametag">Hriday Chheda</h1>
 			<p id = "student">4th year undergrad student at the University of Toronto</p>
 			<p id = "univ">Computer Science Specialist, Statistics Major</p>
-			<a href="https://datasciences.utoronto.ca/dsi-welcomes-2022-suds-scholars/">
-			<p id="suds">SUDS scholar at the Data Sciences Institute</p>
 			</a>
 			<a href="mailto:hriday.chheda@gmail.com">
 				<img src="gmailicon.png" id = "gmailicon">
