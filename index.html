@@ -57,7 +57,7 @@
   	<div id="curr-work-div">
   		<ul>
   			<li>
-  				In the <a href="https://arxiv.org/pdf/2302.14698">first step of this project</a>, we solved the following exact Integer Programming (IP) model for a testbed of 80 real networks and random graphs. We evaluated eight existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM (Greedy)</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.paris.html">Paris</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.edmot.html">EdMot</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Leicht Newman (LN)</a></em>.<br>
+  				In the <a href="https://arxiv.org/pdf/2302.14698">first part of this project</a>, we solved the following exact Integer Programming (IP) model for a testbed of 80 real networks and random graphs. We evaluated eight existing modularity-based community detection methods, <em> <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.greedy_modularity.html">CNM (Greedy)</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.louvain.html">Louvain</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.pycombo.html">Combo</a>, <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.belief.html">Belief</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.leiden.html">Leiden</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.paris.html">Paris</a></em>, <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.edmot.html">EdMot</a></em>, and <em><a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Leicht Newman (LN)</a></em>.<br>
   			</li>
   			<img src="ip_formulation.png">
 				<br>
@@ -88,7 +88,7 @@
 		<div id="curr-work-div">
 			<ul>
 				<li>
-					In the <a href="https://arxiv.org/pdf/2209.04562">second step of this project</a>, we compared Bayan with 21 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs. Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI. We generate LFR graphs with different mu parameter values (different fraction of inter-community edges in the graph generation process). Increasing mu  increases the disassociation of the structure and ground-truth communities.
+					In the <a href="https://arxiv.org/pdf/2209.04562">second part of this project</a>, we compared Bayan with 21 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs. Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI. We generate LFR graphs with different mu parameter values (different fraction of inter-community edges in the graph generation process). Increasing mu  increases the disassociation of the structure and ground-truth communities.
 				</li>
 				<li>
 					We evaluated the AMI between the ground-truth planted partitions and the partitions returned from each algorithm,
@@ -142,14 +142,20 @@
 				<div id="curr-work-div">
 					<ul>
 						<li>
-						The Bayan algorithm is publicly available as a part of the <a href="https://cdlib.readthedocs.io/"> Community Discovery Library (CDlib) </a> for Python. We also plan to make a wrapper publicly available for R users.
+						The Bayan algorithm is publicly available through the <a href="https://pypi.org/project/pip/">package installer for Python (pip) </a>. We also plan to make a wrapper publicly available for R users.
+						Resources for the Bayan algorithm in Python: <br>
+						<a href="https://tinyurl.com/bayancolab">Minimal working examples of Bayan in Google Colab</a> <br>
+						<a href="https://github.com/saref/bayan">Bayan GitHub Repository</a> <br>
+						<a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.bayan.html
+			">Bayan CDlib Documentation</a> <br>
+
 						</li>
 				<li>
-					Running Bayan for models with more than 2000 variables or 2000 constraints requires a free academic license to be installed for the mathematical solver Gurobi (which solves the linear programming relaxation problems within the Bayan algorithm). You may follow the instructions in the <a href="https://github.com/saref/bayan">GitHub Repository</a> to request and install a free academic license for Gurobi if you are affiliated with an academic institution.
+					Running Bayan for optimization models with more than 2000 variables or constraints (input graphs with more than 44 nodes) requires a free academic license to be installed for the mathematical solver Gurobi (which solves the linear programming relaxation problems within the Bayan algorithm). You may follow the instructions in the <a href="https://github.com/saref/bayan">GitHub Repository</a> to request and install a free academic license for Gurobi if your use of the solver is not commercial and you are affiliated with an academic institution.
 		</li>
+
 		<li>
-			Bayan algorithm for Python: <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.bayan.html
-">Documentation</a> and <a href="https://github.com/saref/bayan">GitHub Repository</a>. The Bayan algorithm can be used as follows in Python:
+The Bayan algorithm can be used as follows in Jupyter Python:
 </li>
 						<img src="python_example.png">
 
