@@ -67,7 +67,8 @@
   				We investigated the extent to which current heuristic modularity maximization algorithms succeed in maximizing modularity by evaluating <br>(1) the ratio of their output modularity to the maximum modularity for a given graph (GOP) and <br>(2) the similarity between their output partition and all modularity-maximizing partitions of that graph using Adjusted Mutual Information (AMI).<br> The following figure shows scatterplots of GOP on the y-axis and AMI on the x-axis for the combination of each network and algorithm.<br>
   			</li>
 
-  				<img src="scatter.png">
+  				<img src="scatter.png"
+				width="800">
   				<br>
 				<li>
   				Looking at the y-axis values in the figure, we observe that there is a substantial variation in the values of GOP (i.e., extent of sub-optimality) returned by the eight heuristic algorithms. The x-axis values in the figure show the considerable dissimilarity between the sub-optimal partitions and any optimal partition for these networks. Focusing on the position of data points, we observe that they are mostly located above their corresponding 45-degree line. This indicates that sub-optimal partitions tend to be disproportionally dissimilar to any optimal partition. This result goes against the naive viewpoint that close-to-maximum modularity partitions are also close to an optimal partition.
@@ -116,7 +117,7 @@
 						 and <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.scd.html">Weighted Community Clustering (WCC).</a>
 						 </em><br>
 					<img src="ranking.png"
-					width="1000">
+					width="800">
 					<li>
 					The figure above ranks the 22 algorithms based on AMI in five experiment settings (each with a specific mu parameter value) averaged over 100 LFR graphs.
   			</li>
