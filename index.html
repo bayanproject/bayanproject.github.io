@@ -38,7 +38,7 @@
   		</h2>
   		<ul id="cd-ul">
   				<li>
-  					Community detection is the process of inductively identifying groups within a network (graph). It is a core problem in data science with a wide range of applications in life sciences (e.g., biological systems), social sciences (social networks), physical sciences (complex systems), mathematical sciences (informational networks), and even health sciences (drug discovery) <a href="https://en.wikipedia.org/wiki/Community_structure">(Wikipedia). </a>
+  					Community detection is the descriptive process of clustering the nodes of a network (graph). It is an unsupervised task with a wide range of applications in life sciences (e.g., biological systems), social sciences (offline/online social networks), physical sciences (VLSI design, complex systems), mathematical sciences (agent-based models, computer vision), and even health sciences (drug discovery) <a href="https://en.wikipedia.org/wiki/Community_structure">(Wikipedia). </a>
   					<img src="6meupu.gif" id = "cd-gif"> </img>
   				</li>
   				<li>
@@ -72,7 +72,7 @@
 				<li>
   				Looking at the y-axis values in the figure, we observe that there is a substantial variation in the values of GOP (i.e., extent of sub-optimality) returned by the eight heuristic algorithms. The x-axis values in the figure show the considerable dissimilarity between the sub-optimal partitions and any optimal partition for these networks. Focusing on the position of data points, we observe that they are mostly located above their corresponding 45-degree line. This indicates that sub-optimal partitions tend to be disproportionally dissimilar to any optimal partition. This result goes against the naive viewpoint that close-to-maximum modularity partitions are also close to an optimal partition.
   			<li>
-					The average modularity-based heuristic algorithm returns optimal partitions for only 16.9% of these graphs. Taken together with the low success rates of heuristic algorithms in maximizing modularity, our results indicate a crucial mismatch between the design philosophy of modularity maximization algorithms for community detection and their performance: Heuristic modularity maximization algorithms rarely return an optimal partition or a partition resembling an optimal partition.
+					The average modularity-based heuristic algorithm returns optimal partitions for only 19.4% of these graphs. Taken together with the low success rates of heuristic algorithms in maximizing modularity, our results indicate a crucial mismatch between the design philosophy of modularity maximization algorithms for community detection and their performance: Heuristic modularity maximization algorithms rarely return an optimal partition or a partition resembling an optimal partition.
 			</li>
 			<li>
          The Bayan algorithm solves this fundamental problem and provides optimal partitions and partitions within a guaranteed proximity to an optimal partition.
@@ -131,7 +131,7 @@
 		<div id="curr-work-div">
 			<ul>
 				<li>
-					Samin Aref, Mahdi Mostajabdaveh, and Hriday Chheda. "Heuristic modularity maximization algorithms for community detection rarely return an optimal partition or anything similar." <a href="https://arxiv.org/pdf/2302.14698">Paper</a> in the Proceedings of the Int'l Conference on Computational Science 2023
+					Samin Aref, Mahdi Mostajabdaveh, and Hriday Chheda. "Heuristic modularity maximization algorithms for community detection rarely return an optimal partition or anything similar." in Computational Science - ICCS 2023, LNCS 10476, Springer, 2023 <a href="https://doi.org/10.1007/978-3-031-36027-5_48">doi.org/10.1007/978-3-031-36027-5_48</a> <a href="https://arxiv.org/pdf/2302.14698">Preprint</a> 
 				</li>
 				<li>
 					Samin Aref, Hriday Chheda, and Mahdi Mostajabdaveh. "The Bayan algorithm: detecting communities in networks through exact and approximate optimization of modularity." <a href="https://arxiv.org/pdf/2209.04562">ArXiv preprint 2209.04562</a>
@@ -142,16 +142,17 @@
 				<div id="curr-work-div">
 					<ul>
 						<li>
-						The Bayan algorithm is publicly available through the <a href="https://pypi.org/project/pip/">package installer for Python (pip) </a>. We also plan to make a wrapper publicly available for R users.
+						The Bayan algorithm is publicly available through the <a href="https://pypi.org/project/bayanpy/">package installer for Python (pip) </a>. Bayan also maximizes modularity for positively weighted networks (<a href="https://tinyurl.com/bayancolab">more info on weighted networks</a>).</li>
+						<li>
 						Resources for the Bayan algorithm in Python: <br>
-						<a href="https://tinyurl.com/bayancolab">Minimal working examples of Bayan in Google Colab</a> <br>
-						<a href="https://github.com/saref/bayan">Bayan GitHub Repository</a> <br>
-						<a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.bayan.html
+						- <a href="https://tinyurl.com/bayancolab">Minimal working examples of Bayan in Google Colab</a> <br>
+						- <a href="https://github.com/saref/bayan">Bayan GitHub Repository</a> <br>
+						- <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.bayan.html
 			">Bayan CDlib Documentation</a> <br>
 
 						</li>
 				<li>
-					Running Bayan for optimization models with more than 2000 variables or constraints (input graphs with more than 44 nodes) requires a free academic license to be installed for the mathematical solver Gurobi (which solves the linear programming relaxation problems within the Bayan algorithm). You may follow the instructions in the <a href="https://github.com/saref/bayan">GitHub Repository</a> to request and install a free academic license for Gurobi if your use of the solver is not commercial and you are affiliated with an academic institution.
+					Running Bayan for optimization models with more than 2000 variables or constraints (input graphs with more than 44 nodes) requires a free academic license to be installed for the mathematical solver Gurobi (which solves the linear programming relaxation problems within the Bayan algorithm). You may follow the instructions in the <a href="https://github.com/saref/bayan">GitHub Repository</a> to request and install a free academic license for Gurobi if your usage is not commercial and you are affiliated with an academic institution.
 		</li>
 
 		<li>
@@ -204,7 +205,7 @@ The Bayan algorithm can be used as follows in Jupyter Python:
 		<div id = "personal-hriday">
 			<img src="Display.jpg" id="myphoto">
 			<h1 id = "nametag">Hriday Chheda</h1>
-			<p id = "student">Department of Computer Science, University of Toronto</p>
+			<p id = "student">Department of Mechanical & Industrial Engineering, University of Toronto</p>
 			<p id = "univ"></p>
 			</a>
 			<a href="mailto:hriday.chheda@gmail.com">
