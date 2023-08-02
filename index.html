@@ -89,7 +89,7 @@
 		<div id="curr-work-div">
 			<ul>
 				<li>
-					In the <a href="https://arxiv.org/pdf/2209.04562">second part of this project</a>, we compared Bayan with 21 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs. Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities planted in LFR graphs using AMI. We generate LFR graphs with different mu parameter values (different fraction of inter-community edges in the graph generation process). Increasing mu  increases the disassociation of the structure and ground-truth communities.
+					In the <a href="https://arxiv.org/pdf/2209.04562">second part of this project</a>, we compared Bayan with 29 existing methods for community detection in a testbed of randomly generated LFR benchmark graphs (and ABCD benchmark graphs). Regardless of using modularity or other approaches, community detection methods can be compared based on their capability in retrieving the ground-truth communities of LFR benchmark graphs using AMI. We generate LFR graphs with different values for the mixing parameter mu (fraction of inter-community edges). Increasing mu increases the disassociation of the structure and ground-truth communities.
 				</li>
 				<li>
 					We evaluated the AMI between the ground-truth planted partitions and the partitions returned from each algorithm,
@@ -104,25 +104,33 @@
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.edmot.html">EdMot</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.ga.html">Genetic Algorithm (GA)</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.gemsec.html">Gemsec</a>,
-						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.head_tail.html">Head tail</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.infomap.html">Infomap</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.kcut.html">k-cut</a>,
-						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.label_propagation.html">Label propagation</a>,
+						 <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.label_propagation.asyn_lpa_communities.html">asynchronous label propagation</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.label_propagation.html">semi-synchronous label propagation</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.walktrap.html">Walktrap</a>,
-						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rber_pots.html">Reichardt Bornholdt (RB)</a>,
-						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Leicht Newman (LN)</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rber_pots.html">Reichardt Bornholdt with Erdos-Renyi (RB)</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.rb_pots.html">Reichardt Bornholdt with configuration model (LN)</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.significance_communities.html">Significant scales</a>,
 						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.surprise_communities.html">Surprise</a>,
-						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.sbm_dl.html">Stochastic Block Model (SBM)</a>,
-						 and <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.scd.html">Weighted Community Clustering (WCC).</a>
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.scd.html">Weighted Community Clustering (WCC)</a>,
+						 <a href="https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.kernighan_lin.kernighan_lin_bisection.html#networkx.algorithms.community.kernighan_lin.kernighan_lin_bisection">Kernighan-Lin bisection</a>,
+						 <a href="https://cdlib.readthedocs.io/en/latest/reference/cd_algorithms/algs/cdlib.algorithms.der.html">Diffusion Entropy Reduced (DER)</a>,
+						 <a href="https://github.com/barahona-research-group/PyGenStability">Markov stability with random selection</a>,
+						 <a href="https://github.com/barahona-research-group/PyGenStability">Markov stability with minimum NVI</a>,
+						 <a href="https://graph-tool.skewed.de/static/doc/demos/inference/inference.html">Stochastic Block Model (SBM)</a>,
+						 <a href="https://graph-tool.skewed.de/static/doc/demos/inference/inference.html">SBM with Markov chain Monte Carlo (MCMC)</a>,
+						 <a href="https://graph-tool.skewed.de/static/doc/demos/inference/inference.html">Bayesian Planted Partition (BPP)</a>, and
+						 <a href="https://graph-tool.skewed.de/static/doc/demos/inference/inference.html">BPP with MCMC</a>.
 						 </em><br>
+						 For the two Markov stability algorithms (MR and MV), we have used the <em>PyGenStability</em> library (version 0.2.2). For the four inferential methods (SB, SM, BP, and BM), we have used the <em>graph_tool</em> library (version 2.57). For the two algorithms, Kernighan-Lin and asynchronous label propagation, we have used the <em>NetworkX</em> library (version 3.1). For the remaining 21 algorithm, we have used the Community Discovery library (<em>CDlib</em>) (version 0.2.6).<br>
 					<img src="ranking.png"
 					width="650">
 					<li>
-					The figure above ranks the 22 algorithms based on AMI in five experiment settings (each with a specific mu parameter value) averaged over 100 LFR graphs.
+					The figure above ranks the 30 algorithms based on AMI in five experiment settings (each with a specific mu parameter value) averaged over 100 LFR graphs.
   			</li>
 				<li>
-					Bayan has a relatively stable performance rank over different values of the mu parameter. Also, averaging the AMIs over all 500 LFR graphs, Bayan has the largest average AMI. This indicates the distinctive capability of Bayan in retrieving the ground-truth communities. These descriptive results are confirmed by rigorous statistical tests on the performance of these algorithms.
+					Bayan has a relatively high and stable performance rank over different values of the mu parameter. This indicates the distinctive capability of maximum-modularity partitions in retrieving the ground-truth communities. These descriptive results are confirmed by rigorous statistical tests on the performance of these algorithms (read the Bayan preprint for more info).
 				</li>
 			</ul>
 		</div>
@@ -132,7 +140,7 @@
 		<div id="curr-work-div">
 			<ul>
 				<li>
-					Samin Aref, Mahdi Mostajabdaveh, and Hriday Chheda. "Heuristic modularity maximization algorithms for community detection rarely return an optimal partition or anything similar." in Computational Science - ICCS 2023, LNCS 10476, Springer, 2023 <a href="https://doi.org/10.1007/978-3-031-36027-5_48">doi.org/10.1007/978-3-031-36027-5_48</a> <a href="https://arxiv.org/pdf/2302.14698">Preprint</a> 
+					Samin Aref, Mahdi Mostajabdaveh, and Hriday Chheda. "Heuristic modularity maximization algorithms for community detection rarely return an optimal partition or anything similar." in Computational Science - ICCS 2023, LNCS 10476, Springer, 2023 <a href="https://doi.org/10.1007/978-3-031-36027-5_48">doi.org/10.1007/978-3-031-36027-5_48</a> <a href="https://arxiv.org/pdf/2302.14698">Preprint</a>
 				</li>
 				<li>
 					Samin Aref, Hriday Chheda, and Mahdi Mostajabdaveh. "The Bayan algorithm: detecting communities in networks through exact and approximate optimization of modularity." <a href="https://arxiv.org/pdf/2209.04562">ArXiv preprint 2209.04562</a>
